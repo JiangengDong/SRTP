@@ -41,6 +41,13 @@ class NatNetClient:
         # NatNet stream version. This will be updated to the actual version the server is using during initialization.
         self.__natNetStreamVersion = (3, 0, 0, 0)
 
+        # A stop flag for threads
+        self.__stopthread = 0
+
+        # thread object
+        self.__commandThread = None
+        self.__dataThread = None
+
     # Client/server message ids
     NAT_PING = 0
     NAT_PINGRESPONSE = 1
@@ -382,7 +389,7 @@ class NatNetClient:
                 offset += self.__unpackSkeletonDescription(data[offset:])
 
     def __dataThreadFunction(self, socket):
-        while True:
+        while not self.__stopthread:
             # Block for input
             data, addr = socket.recvfrom(32768)  # 32k byte buffer size
             if (len(data) > 0):
@@ -459,12 +466,23 @@ class NatNetClient:
             exit
 
         # Create a separate thread for receiving command packets
-        commandThread = Thread(target=self.__dataThreadFunction, args=(self.commandSocket,))
-        commandThread.start()
+        self.__commandThread = Thread(target=self.__dataThreadFunction, args=(self.commandSocket,))
+        self.__commandThread.start()
 
         self.sendCommand(self.NAT_PING, "Ping", self.commandSocket, (self.serverIPAddress, self.commandPort))
         time.sleep(0.1)
 
         # Create a separate thread for receiving data packets
-        dataThread = Thread(target=self.__dataThreadFunction, args=(self.dataSocket,))
-        dataThread.start()
+        self.__dataThread = Thread(target=self.__dataThreadFunction, args=(self.dataSocket,))
+        self.__dataThread.start()
+
+    def stop(self):
+        # Stop two threads
+        self.__stopthread = 1
+        self.__dataThread.join()
+        self.__commandThread.join()
+        self.__stopthread = 0
+
+        # close sockets
+        self.dataSocket.close()
+        self.commandSocket.close()

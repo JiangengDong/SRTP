@@ -9,6 +9,7 @@ class ZJUVisionServer:
         self.newFrameListener = None
         self.serverSocket = None
         self.datathread = None
+        self.__stopthread = 0
 
     def __createsocket(self):
         # 创建 socket 对象
@@ -20,7 +21,7 @@ class ZJUVisionServer:
         return serversocket
 
     def __datathreadfunction(self, visionsocket):
-        while True:
+        while not self.__stopthread:
             data, addr = visionsocket.recvfrom(256)
             if len(data) > 0:
                 self.newFrameListener(data, addr)
@@ -32,3 +33,12 @@ class ZJUVisionServer:
             exit()
         self.datathread = Thread(target=self.__datathreadfunction, args=(self.serverSocket,))
         self.datathread.start()
+
+    def stop(self):
+        # Stop thread
+        self.__stopthread = 1
+        self.datathread.join()
+        self.__stopthread = 0
+
+        # close socket
+        self.serverSocket.close()
