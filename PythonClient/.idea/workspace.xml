@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5a2432d-8dd6-4024-94a7-217394207117" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NatNetClient.py" afterPath="$PROJECT_DIR$/NatNetClient.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZJUVision.py" afterPath="$PROJECT_DIR$/ZJUVision.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonSample.py" afterPath="$PROJECT_DIR$/PythonSample.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +17,8 @@
       <file leaf-file-name="ZJUVision.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZJUVision.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -28,72 +26,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NatNetClient.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/NatNetClient.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1702">
-              <caret line="488" column="0" lean-forward="true" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#93#131#0" expanded="false" />
-                <element signature="e#472#1476#0" expanded="false" />
-                <element signature="e#1798#2194#0" expanded="false" />
-                <element signature="e#2302#2755#0" expanded="false" />
-                <element signature="e#2863#3110#0" expanded="false" />
-                <element signature="e#3211#5694#0" expanded="false" />
-                <element signature="e#3274#3290#0" expanded="false" />
-                <element signature="e#4232#4252#0" expanded="false" />
-                <element signature="e#4514#5235#0" expanded="false" />
-                <element signature="e#4605#4620#0" expanded="false" />
-                <element signature="e#5470#5671#0" expanded="false" />
-                <element signature="e#5792#6204#0" expanded="false" />
-                <element signature="e#6307#12520#0" expanded="false" />
-                <element signature="e#6855#7563#0" expanded="false" />
-                <element signature="e#7310#7553#0" expanded="false" />
-                <element signature="e#7453#7553#0" expanded="false" />
-                <element signature="e#7863#7908#0" expanded="false" />
-                <element signature="e#8579#8849#0" expanded="false" />
-                <element signature="e#9073#10083#0" expanded="false" />
-                <element signature="e#9308#10083#0" expanded="false" />
-                <element signature="e#9825#10073#0" expanded="false" />
-                <element signature="e#10278#11420#0" expanded="false" />
-                <element signature="e#10501#11420#0" expanded="false" />
-                <element signature="e#10957#11420#0" expanded="false" />
-                <element signature="e#11232#11410#0" expanded="false" />
-                <element signature="e#11955#12035#0" expanded="false" />
-                <element signature="e#12062#12141#0" expanded="false" />
-                <element signature="e#12619#13132#0" expanded="false" />
-                <element signature="e#12949#13109#0" expanded="false" />
-                <element signature="e#13237#13802#0" expanded="false" />
-                <element signature="e#13342#13502#0" expanded="false" />
-                <element signature="e#13904#14414#0" expanded="false" />
-                <element signature="e#14509#15079#0" expanded="false" />
-                <element signature="e#14677#15079#0" expanded="false" />
-                <element signature="e#15387#17053#0" expanded="false" />
-                <element signature="e#15927#16152#0" expanded="false" />
-                <element signature="e#16212#16570#0" expanded="false" />
-                <element signature="e#16250#16355#0" expanded="false" />
-                <element signature="e#16390#16570#0" expanded="false" />
-                <element signature="e#16759#16943#0" expanded="false" />
-                <element signature="e#17128#17752#0" expanded="false" />
-                <element signature="e#17284#17326#0" expanded="false" />
-                <element signature="e#17469#17533#0" expanded="false" />
-                <element signature="e#17781#18708#0" expanded="false" />
-                <element signature="e#17921#17974#0" expanded="false" />
-                <element signature="e#18123#18179#0" expanded="false" />
-                <element signature="e#18738#18977#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PythonSample.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PythonSample.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PythonSample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#265#465#0" expanded="false" />
+                <element signature="e#1253#1319#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -132,9 +72,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="D:/program/NatNetSDK/Samples/PythonClient/NatNetClient.py" />
-        <option value="$PROJECT_DIR$/PythonSample.py" />
         <option value="$PROJECT_DIR$/NatNetClient.py" />
         <option value="$PROJECT_DIR$/ZJUVision.py" />
+        <option value="$PROJECT_DIR$/PythonSample.py" />
       </list>
     </option>
   </component>
@@ -161,6 +101,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,7 +122,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -271,7 +211,7 @@
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21995708" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32865497" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -337,11 +277,87 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ZJUVision.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="989">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PythonSample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="e#265#465#0" expanded="false" />
+            <element signature="e#1253#1319#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NatNetClient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11224">
+          <caret line="488" column="0" lean-forward="true" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#93#131#0" expanded="false" />
+            <element signature="e#472#1476#0" expanded="false" />
+            <element signature="e#1798#2194#0" expanded="false" />
+            <element signature="e#2302#2755#0" expanded="false" />
+            <element signature="e#2863#3110#0" expanded="false" />
+            <element signature="e#3211#5694#0" expanded="false" />
+            <element signature="e#3274#3290#0" expanded="false" />
+            <element signature="e#4232#4252#0" expanded="false" />
+            <element signature="e#4514#5235#0" expanded="false" />
+            <element signature="e#4605#4620#0" expanded="false" />
+            <element signature="e#5470#5671#0" expanded="false" />
+            <element signature="e#5792#6204#0" expanded="false" />
+            <element signature="e#7310#7553#0" expanded="false" />
+            <element signature="e#7453#7553#0" expanded="false" />
+            <element signature="e#7863#7908#0" expanded="false" />
+            <element signature="e#8579#8849#0" expanded="false" />
+            <element signature="e#9073#10083#0" expanded="false" />
+            <element signature="e#9308#10083#0" expanded="false" />
+            <element signature="e#9825#10073#0" expanded="false" />
+            <element signature="e#10278#11420#0" expanded="false" />
+            <element signature="e#10501#11420#0" expanded="false" />
+            <element signature="e#10957#11420#0" expanded="false" />
+            <element signature="e#11232#11410#0" expanded="false" />
+            <element signature="e#11955#12035#0" expanded="false" />
+            <element signature="e#12062#12141#0" expanded="false" />
+            <element signature="e#12619#13132#0" expanded="false" />
+            <element signature="e#12949#13109#0" expanded="false" />
+            <element signature="e#13237#13802#0" expanded="false" />
+            <element signature="e#13342#13502#0" expanded="false" />
+            <element signature="e#13904#14414#0" expanded="false" />
+            <element signature="e#14509#15079#0" expanded="false" />
+            <element signature="e#14677#15079#0" expanded="false" />
+            <element signature="e#15387#17053#0" expanded="false" />
+            <element signature="e#15927#16152#0" expanded="false" />
+            <element signature="e#16212#16570#0" expanded="false" />
+            <element signature="e#16250#16355#0" expanded="false" />
+            <element signature="e#16390#16570#0" expanded="false" />
+            <element signature="e#16759#16943#0" expanded="false" />
+            <element signature="e#17128#17752#0" expanded="false" />
+            <element signature="e#17284#17326#0" expanded="false" />
+            <element signature="e#17469#17533#0" expanded="false" />
+            <element signature="e#17781#18708#0" expanded="false" />
+            <element signature="e#17921#17974#0" expanded="false" />
+            <element signature="e#18123#18179#0" expanded="false" />
+            <element signature="e#18738#18977#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ZJUVision.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
@@ -370,8 +386,6 @@
             <element signature="e#4605#4620#0" expanded="false" />
             <element signature="e#5470#5671#0" expanded="false" />
             <element signature="e#5792#6204#0" expanded="false" />
-            <element signature="e#6307#12520#0" expanded="false" />
-            <element signature="e#6855#7563#0" expanded="false" />
             <element signature="e#7310#7553#0" expanded="false" />
             <element signature="e#7453#7553#0" expanded="false" />
             <element signature="e#7863#7908#0" expanded="false" />
@@ -414,7 +428,8 @@
         <state relative-caret-position="598">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#265#465#0" expanded="false" />
+            <element signature="e#1253#1319#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -518,30 +533,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../PythonForZJUVision/SocketForZJUVision.py" />
-    <entry file="file://$PROJECT_DIR$/PythonSample.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/-1120166012/time.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZJUVision.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NatNetClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1702">
-          <caret line="488" column="0" lean-forward="true" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
+        <state relative-caret-position="2390">
+          <caret line="488" column="0" lean-forward="false" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#93#131#0" expanded="false" />
@@ -556,8 +559,6 @@
             <element signature="e#4605#4620#0" expanded="false" />
             <element signature="e#5470#5671#0" expanded="false" />
             <element signature="e#5792#6204#0" expanded="false" />
-            <element signature="e#6307#12520#0" expanded="false" />
-            <element signature="e#6855#7563#0" expanded="false" />
             <element signature="e#7310#7553#0" expanded="false" />
             <element signature="e#7453#7553#0" expanded="false" />
             <element signature="e#7863#7908#0" expanded="false" />
@@ -591,6 +592,27 @@
             <element signature="e#17921#17974#0" expanded="false" />
             <element signature="e#18123#18179#0" expanded="false" />
             <element signature="e#18738#18977#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZJUVision.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PythonSample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding>
+            <element signature="e#265#465#0" expanded="false" />
+            <element signature="e#1253#1319#0" expanded="false" />
           </folding>
         </state>
       </provider>
