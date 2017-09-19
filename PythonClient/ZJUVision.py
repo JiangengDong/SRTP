@@ -2,7 +2,7 @@ import socket
 from threading import Thread
 
 
-class ZJUVisionServer:
+class UDPServer:
     def __init__(self, port=2008):
         self.host = socket.gethostname()
         self.port = port
