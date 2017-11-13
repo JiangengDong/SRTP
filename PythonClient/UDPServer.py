@@ -3,8 +3,19 @@ from threading import Thread
 
 
 class UDPServer:
-    def __init__(self, port=2008):
-        self.host = socket.gethostname()
+    """
+    a server that can only receive data. It has two public methods and one thread.
+
+    Two public methods are listed below:
+    1. run()                    start thread and receive data
+    2. stop()                   stop thread
+    """
+
+    def __init__(self, hostip='0.0.0.0', port=2008):
+        if  hostip is '0.0.0.0':
+            self.host = socket.gethostname()
+        else:
+            self.host = hostip
         self.port = port
         self.newFrameListener = None
         self.serverSocket = None
