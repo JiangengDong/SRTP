@@ -16,21 +16,46 @@ DoubleValue = struct.Struct('<d')
 
 
 class NatNetClient:
-    def __init__(self, serverIP="192.168.1.166", multicastIP="239.255.42.99", target="Rigid Body 1"):
+    """
+    a client to send and receive package from Motive server. It has two threads, three public methods, and two callbacks.
+
+    Two threads are listed  below:
+    1. self.__commandThread         a thread to send command to and receive response from server
+    2. self.__dataThread            a thread to send request to and receive data from server
+    These two threads are control by a varibale, self.__stopThread. When this variable is set to 1, the threads will stop.
+
+    Two callbacks are listed below:
+    1. rigidBodyListener(id, pos, rot)
+    2. newFrameListener(frameNumber, tracedata, latency, isRecording)
+
+    Three methods are listed below:
+    1. run()                        start two threads
+    2. stop()                       stop two threads
+    3. sendCommand()                send command to server
+    """
+
+    def __init__(self, serverIP="192.168.1.100", hostIP='0.0.0.0', multicastIP="239.255.42.99", target="Rigid Body 1"):
+
         # Change this value to the IP address of the NatNet server.
-        self.serverIPAddress = serverIP
+        self.__serverIPAddress = serverIP
 
         # This should match the multicast address listed in Motive's streaming settings.
-        self.multicastAddress = multicastIP
+        self.__multicastAddress = multicastIP
+
+        # This is used to choose which ip on this client should be used
+        if hostIP is '0.0.0.0':
+            self.__hostAddress = ''
+        else:
+            self.__hostAddress = hostIP
 
         # NatNet Command channel
-        self.commandPort = 1510
+        self.__commandPort = 1510
 
         # NatNet Data channel
-        self.dataPort = 1511
+        self.__dataPort = 1511
 
         # marker set to trace
-        self.traceset = target
+        self.__traceset = target
 
         # Set this to a callback method of your choice to receive per-rigid-body data at each frame.
         self.rigidBodyListener = None
@@ -40,6 +65,13 @@ class NatNetClient:
 
         # NatNet stream version. This will be updated to the actual version the server is using during initialization.
         self.__natNetStreamVersion = (3, 0, 0, 0)
+
+        # A stop flag for threads
+        self.__stopthread = 0
+
+        # thread object
+        self.__commandThread = None
+        self.__dataThread = None
 
     # Client/server message ids
     NAT_PING = 0
@@ -60,22 +92,22 @@ class NatNetClient:
                 'CurrentTakeLength', 'AnalogSamplesPerMocapFrame'}
 
     # Create a data socket to attach to the NatNet stream
-    def __createDataSocket(self, port):
+    def __createDataSocket(self, ip, port):
         result = socket.socket(socket.AF_INET,  # Internet
                                socket.SOCK_DGRAM,
                                socket.IPPROTO_UDP)  # UDP
         result.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        result.bind(('', port))
+        result.bind((ip, port))
 
-        mreq = struct.pack("4sl", socket.inet_aton(self.multicastAddress), socket.INADDR_ANY)
+        mreq = struct.pack("4sl", socket.inet_aton(self.__multicastAddress), socket.INADDR_ANY)
         result.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
         return result
 
     # Create a command socket to attach to the NatNet stream
-    def __createCommandSocket(self):
+    def __createCommandSocket(self, ip):
         result = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         result.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        result.bind(('', 0))
+        result.bind((ip, 0))
         result.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
         return result
@@ -194,7 +226,7 @@ class NatNetClient:
             for j in range(0, markerCount):
                 pos = Vector3.unpack(data[offset:offset + 12])
                 offset += 12
-                if modelName == self.traceset:
+                if modelName == self.__traceset:
                     tracedata[j] = pos
                     # trace( "\tMarker", j, ":", pos[0],",", pos[1],",", pos[2] )
 
@@ -382,7 +414,7 @@ class NatNetClient:
                 offset += self.__unpackSkeletonDescription(data[offset:])
 
     def __dataThreadFunction(self, socket):
-        while True:
+        while not self.__stopthread:
             # Block for input
             data, addr = socket.recvfrom(32768)  # 32k byte buffer size
             if (len(data) > 0):
@@ -447,24 +479,35 @@ class NatNetClient:
 
     def run(self):
         # Create the data socket
-        self.dataSocket = self.__createDataSocket(self.dataPort)
-        if (self.dataSocket is None):
+        self.__dataSocket = self.__createDataSocket(self.__hostAddress, self.__dataPort)
+        if (self.__dataSocket is None):
             print("Could not open data channel")
             exit
 
         # Create the command socket
-        self.commandSocket = self.__createCommandSocket()
-        if (self.commandSocket is None):
+        self.__commandSocket = self.__createCommandSocket(self.__hostAddress)
+        if (self.__commandSocket is None):
             print("Could not open command channel")
             exit
 
         # Create a separate thread for receiving command packets
-        commandThread = Thread(target=self.__dataThreadFunction, args=(self.commandSocket,))
-        commandThread.start()
+        self.__commandThread = Thread(target=self.__dataThreadFunction, args=(self.__commandSocket,))
+        self.__commandThread.start()
 
-        self.sendCommand(self.NAT_PING, "Ping", self.commandSocket, (self.serverIPAddress, self.commandPort))
+        self.sendCommand(self.NAT_PING, "Ping", self.__commandSocket, (self.__serverIPAddress, self.__commandPort))
         time.sleep(0.1)
 
         # Create a separate thread for receiving data packets
-        dataThread = Thread(target=self.__dataThreadFunction, args=(self.dataSocket,))
-        dataThread.start()
+        self.__dataThread = Thread(target=self.__dataThreadFunction, args=(self.__dataSocket,))
+        self.__dataThread.start()
+
+    def stop(self):
+        # Stop two threads
+        self.__stopthread = 1
+        self.__dataThread.join()
+        self.__commandThread.join()
+        self.__stopthread = 0
+
+        # close sockets
+        self.__dataSocket.close()
+        self.__commandSocket.close()
