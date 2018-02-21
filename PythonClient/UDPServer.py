@@ -1,14 +1,17 @@
-import socket
+﻿import socket
 from threading import Thread
 
 
 class UDPServer:
     """
-    a server that can only receive data. It has two public methods and one thread.
+    a server that can only receive data. It has two public methods, one thread and one callback.
 
     Two public methods are listed below:
     1. run()                    start thread and receive data
     2. stop()                   stop thread
+
+    One callback:
+    1. newFrameListener(data, addr)
     """
 
     def __init__(self, hostip='0.0.0.0', port=2008):
@@ -34,6 +37,7 @@ class UDPServer:
     def __datathreadfunction(self, visionsocket):
         while not self.__stopthread:
             data, addr = visionsocket.recvfrom(256)
+            # data = data.decode('utf-8')
             if len(data) > 0:
                 self.newFrameListener(data, addr)
 

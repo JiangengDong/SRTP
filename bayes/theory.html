@@ -1,0 +1,124 @@
+<h1>Theory</h1>
+<p>任意MIMO系统可以视为多个MISO系统的组合，故只考虑MISO系统。</p>
+<p>如果不存在误差，则两个坐标系之间的关系如下，其中$X$为齐次坐标$\left[x_1, x_2, x_3, 1\right]^T$，$y$为标量，$W_{real}$为行向量：</p>
+<p>$$ y=W_{real}X $$</p>
+<p>考虑测量误差</p>
+<p>$$ \widetilde{y}=
+y+\varepsilon_y,
+\widetilde{X}=
+X+\varepsilon_X
+$$</p>
+<p>$$ \widetilde{y}=
+W_{real}\widetilde{X}
+-W_{real}\varepsilon_X
++\varepsilon_y
+$$</p>
+<p>其中</p>
+<p>$$ \varepsilon_y\sim
+\mathcal{N}\left(
+\bold{0}, \sigma_y
+\right),
+\varepsilon_X\sim
+\mathcal{N}\left(
+\bold{0}, \Sigma_X
+\right)
+$$</p>
+<p>于是有：</p>
+<p>$$ \widetilde{y}\sim
+\mathcal{N}\left(
+W_{real}\widetilde{X}, \sigma_d
+\right)
+$$</p>
+<p>其中$\sigma_d=W_{real}\Sigma_XW_{real}^T+\sigma_y$</p>
+<p>采用贝叶斯线性回归，记第$i$次迭代后$W$分布为</p>
+<p>$$ W\sim\mathcal{N}\left(\bar{\mu_i}, \Sigma_i\right) $$</p>
+<p>则贝叶斯线性回归公式为：</p>
+<p>$$ p\left(
+W|D_i
+\right)
+\propto
+p\left(
+\widetilde{y}_i\vert\widetilde{X}<em>i, W
+\right)
+p\left(
+W|D</em>{i-1}
+\right)
+$$</p>
+<p>$$ \propto
+\exp{
+\left[
+-\frac{1}{2}
+\left(
+\widetilde{y}_i-W\widetilde{X}<em>i
+\right)
+\sigma_d^{-1}
+\left(
+\widetilde{y}<em>i-W\widetilde{X}<em>i
+\right)^T
+\right]
+}
+\exp{
+\left[
+-\frac{1}{2}
+\left(
+W-\bar{\mu}</em>{i-1}
+\right)
+\Sigma</em>{i-1}^{-1}
+\left(
+W-\bar{\mu}</em>{i-1}
+\right)^T
+\right]
+}
+$$</p>
+<p>$$ \propto
+\exp{
+\left[
+-\frac{1}{2}
+\left(
+-W\widetilde{X}<em>i\sigma_d^{-1}\widetilde{y}<em>i
+-\widetilde{y}<em>i\sigma_d^{-1}\widetilde{X}<em>i^TW^T
+-\bar{\mu}</em>{i-1}\Sigma</em>{i-1}^{-1}W^T
+-W\Sigma</em>{i-1}^{-1}\bar{\mu}</em>{i-1}
++W\widetilde{X}_i\sigma_d^{-1}\widetilde{X}<em>i^TW^T
++W\Sigma</em>{i-1}^{-1}W^T
+\right)
+\right]
+}
+$$</p>
+<p>整理可以得到：</p>
+<p>$$ \Sigma_i=
+\left(
+\widetilde{X}_i\sigma_d^{-1}\widetilde{X}<em>i^T
++\Sigma</em>{i-1}^{-1}
+\right)^{-1}
+$$</p>
+<p>$$ \bar{\mu}_i=
+\left(
+\widetilde{y}<em>i\sigma_d^{-1}\widetilde{X}<em>i^T
++\bar{\mu}</em>{i-1}\Sigma</em>{i-1}^{-1}
+\right)
+\Sigma_i
+$$</p>
+<p>对于接收到的第一组数据，根据极大似然估计有</p>
+<p>$$ W=
+\widetilde{y}_1\sigma_d^{-1}\widetilde{X}_1^T
+\left(
+\widetilde{X}_1\sigma_d^{-1}\widetilde{X}_1^T
+\right)^{-1}
+$$</p>
+<p>所以假设$\Sigma_0^{-1}=\bold{0}$，使极大似然估计与贝叶斯回归的参数期望一致。</p>
+<p>综上，贝叶斯线性回归过程如下：</p>
+<p>$$ initial: \Sigma_0^{-1}=\bold{0},\ \Sigma_X,\ \sigma_y $$</p>
+<p>$$ iterative:
+\Sigma_i=
+\left(
+\widetilde{X}_i\sigma_d^{-1}\widetilde{X}<em>i^T
++\Sigma</em>{i-1}^{-1}
+\right)^{-1},<br>
+\bar{\mu}_i=
+\left(
+\widetilde{y}<em>i\sigma_d^{-1}\widetilde{X}<em>i^T
++\bar{\mu}</em>{i-1}\Sigma</em>{i-1}^{-1}
+\right)
+\Sigma_i
+$$</p>
