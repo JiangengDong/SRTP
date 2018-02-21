@@ -5,7 +5,7 @@ from threading import Thread
 
 
 def trace(*args):
-    pass  # print("".join(map(str, args)))
+    pass # print("".join(map(str, args)))
 
 
 # Create structs for reading various object types to speed up parsing.
@@ -26,7 +26,7 @@ class NatNetClient:
 
     Two callbacks are listed below:
     1. rigidBodyListener(id, pos, rot)
-    2. newFrameListener(frameNumber, tracedata, latency, isRecording)
+    2. newFrameListener(frameNumber, tracedata, latency)
 
     Three methods are listed below:
     1. run()                        start two threads
@@ -223,12 +223,13 @@ class NatNetClient:
             offset += 4
             trace("Marker Count:", markerCount)
 
+            tracedata = [0, 0, 0]
             for j in range(0, markerCount):
                 pos = Vector3.unpack(data[offset:offset + 12])
                 offset += 12
-                if modelName == self.__traceset:
+                if modelName == self.__traceset or True:
                     tracedata[j] = pos
-                    # trace( "\tMarker", j, ":", pos[0],",", pos[1],",", pos[2] )
+                    trace( "\tMarker", j, ":", pos[0],",", pos[1],",", pos[2] )
 
         # Unlabeled markers count (4 bytes)
         unlabeledMarkersCount = int.from_bytes(data[offset:offset + 4], byteorder='little')
@@ -236,11 +237,10 @@ class NatNetClient:
         trace("Unlabeled Markers Count:", unlabeledMarkersCount)
 
         # skip unlabeled markers
-        offset += 12 * unlabeledMarkersCount
-        # for i in range( 0, unlabeledMarkersCount ):
-        #     pos = Vector3.unpack( data[offset:offset+12] )
-        #     offset += 12
-        #     trace( "\tMarker", i, ":", pos[0],",", pos[1],",", pos[2] )
+        for i in range( 0, unlabeledMarkersCount ):
+            pos = Vector3.unpack(data[offset:offset+12])
+            offset += 12
+            trace("\tMarker", i, ":", pos[0],",", pos[1],",", pos[2])
 
         # Rigid body count (4 bytes)
         rigidBodyCount = int.from_bytes(data[offset:offset + 4], byteorder='little')
@@ -277,7 +277,7 @@ class NatNetClient:
 
                 # Version 2.6 and later
                 if ((self.__natNetStreamVersion[0] == 2 and self.__natNetStreamVersion[1] >= 6) or
-                            self.__natNetStreamVersion[0] > 2 or major == 0):
+                            self.__natNetStreamVersion[0] > 2):
                     param, = struct.unpack('h', data[offset:offset + 2])
                     offset += 2
                     occluded = (param & 0x01) != 0
@@ -330,14 +330,14 @@ class NatNetClient:
             offset += 4
 
         # Frame parameters
-        param, = struct.unpack('h', data[offset:offset + 2])
-        isRecording = (param & 0x01) != 0
-        trackedModelsChanged = (param & 0x02) != 0
-        offset += 2
+        # param, = struct.unpack('h', data[offset:offset + 2])
+        # isRecording = (param & 0x01) != 0
+        # trackedModelsChanged = (param & 0x02) != 0
+        # offset += 2
 
         # Send information to any listener.
         if self.newFrameListener is not None:
-            self.newFrameListener(frameNumber, tracedata, latency, isRecording)
+            self.newFrameListener(frameNumber, tracedata, latency)
 
     # Unpack a marker set description packet
     def __unpackMarkerSetDescription(self, data):
