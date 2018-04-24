@@ -135,12 +135,12 @@ $$
 
 $$ initial: \Sigma_0^{-1}=\bold{0},\ \Sigma_X,\ \sigma_y $$
 
-$$ iterative: 
+$$ iterative:
     \Sigma_i=
     \left(
         \widetilde{X}_i\sigma_d^{-1}\widetilde{X}_i^T
         +\Sigma_{i-1}^{-1}
-    \right)^{-1},\ 
+    \right)^{-1},
     \bar{\mu}_i=
     \left(
         \widetilde{y}_i\sigma_d^{-1}\widetilde{X}_i^T
